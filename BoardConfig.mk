@@ -8,6 +8,7 @@ DEVICE_PATH := device/motorola/bangkk
 # Kernel: the shared sm6375 6.1 Image and base DTB, with the bangkk DTBO and
 # board modules.
 KERNEL_PREBUILT_PATH := device/motorola/bangkk-kernel/6.1
+
 # Inherit from motorola sm6375-common
 include device/motorola/sm6375-common/BoardConfigCommon.mk
 
@@ -15,13 +16,6 @@ include device/motorola/sm6375-common/BoardConfigCommon.mk
 TARGET_BOOTLOADER_BOARD_NAME := bangkk
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=bangkk androidboot.hab.cid=50 androidboot.hab.csv=24
 
-# HIDL
-ODM_MANIFEST_SKUS += b d de dn n
-ODM_MANIFEST_B_FILES := $(DEVICE_PATH)/sku/manifest_b.xml
-ODM_MANIFEST_D_FILES := $(DEVICE_PATH)/sku/manifest_d.xml
-ODM_MANIFEST_DE_FILES := $(DEVICE_PATH)/sku/manifest_de.xml
-ODM_MANIFEST_DN_FILES := $(DEVICE_PATH)/sku/manifest_dn.xml
-ODM_MANIFEST_N_FILES := $(DEVICE_PATH)/sku/manifest_n.xml
 # Display
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 90
 
@@ -44,6 +38,15 @@ VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 # Verified Boot
 BOARD_AVB_ROLLBACK_INDEX := 36
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := 36
+
+# VINTF
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/compatibility_matrix.xml
+ODM_MANIFEST_SKUS += b d de dn n
+ODM_MANIFEST_B_FILES := $(DEVICE_PATH)/sku/manifest_b.xml
+ODM_MANIFEST_D_FILES := $(DEVICE_PATH)/sku/manifest_d.xml
+ODM_MANIFEST_DE_FILES := $(DEVICE_PATH)/sku/manifest_de.xml
+ODM_MANIFEST_DN_FILES := $(DEVICE_PATH)/sku/manifest_dn.xml
+ODM_MANIFEST_N_FILES := $(DEVICE_PATH)/sku/manifest_n.xml
 
 # inherit from the proprietary version
 include vendor/motorola/bangkk/BoardConfigVendor.mk
