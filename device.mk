@@ -58,9 +58,6 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
-
-# LiveDisplay
-$(call soong_config_set_bool,livedisplay_sysfs,enable_af,true)
     init.mmi.overlay.rc
 
 # Permissions
