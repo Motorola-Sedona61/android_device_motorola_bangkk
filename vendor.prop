@@ -10,10 +10,5 @@ ro.vendor.radio.imei.sv=26
 
 # Sensors
 persist.vendor.sensors.mot_tap=true
-persist.vendor.sensors.support_direct_channel=false
 ro.vendor.sensors.mot_ltv=true
 ro.vendor.sensors.prox_for_call=true
-
-# Touch
-debug.sf.touch_boost_refreshrate=90
-ro.surface_flinger.set_touch_timer_ms=1000
