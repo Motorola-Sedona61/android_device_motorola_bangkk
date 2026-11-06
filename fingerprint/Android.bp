@@ -19,5 +19,5 @@ cc_binary {
         "android.hardware.biometrics.fingerprint@2.3",
         "vendor.egistec.hardware.fingerprint@4.0",
     ],
-    header_libs: ["generated_kernel_headers"]
+    header_libs: ["qti_display_kernel_headers"]
 }
