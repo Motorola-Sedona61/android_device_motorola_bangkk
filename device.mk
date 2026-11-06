@@ -89,6 +89,11 @@ PRODUCT_COPY_FILES += \
 $(foreach DEVICE_SKU, $(NFC_DEVICE_SKUS), \
     $(LOCAL_PATH)/permissions/unavail.android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(DEVICE_SKU)/unavail.android.hardware.se.omapi.ese.xml)
 
+# Touch firmware for recovery, which loads the touch drivers before /vendor
+PRODUCT_COPY_FILES += \
+    $(foreach f,focaltech_ts_fw_csot.bin goodix-tm-gt9916S-23062705-649a9b6c-bangkk.bin tm_goodix_cfg_group.bin, \
+        vendor/motorola/bangkk/proprietary/vendor/firmware/$(f):$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/firmware/$(f))
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.moto_ext
