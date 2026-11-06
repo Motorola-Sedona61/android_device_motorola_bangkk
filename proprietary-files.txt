@@ -219,8 +219,6 @@ vendor/lib64/camera/com.qti.tuned.mot_bangkk_s5kgn9_ak7377.bin
 vendor/lib64/camera/com.qti.tuned.mot_bangkk_s5kgn9_ak7377_india.bin
 vendor/lib64/camera/com.qti.tuned.mot_bangkk_s5kgn9_india.bin
 
-# Capsense
-vendor/bin/capsense_reset
 
 # Display calibration data
 vendor/etc/qdcm_calib_data_mipi_moto_vid_csot_1080p_dsc_655.xml
@@ -258,12 +256,6 @@ vendor/firmware/sec_s3nrn4v_firmware.bin
 # OEM
 vendor/etc/vhw.xml
 
-# SAR firmware
-vendor/firmware/aw963xx_reg_0.bin
-
-# Sensors
-vendor/lib64/sensors.moto.so
-vendor/lib64/sensors.ssc.so
 
 # Sensor - configs
 vendor/etc/sensors/config/mot_camgest.json
