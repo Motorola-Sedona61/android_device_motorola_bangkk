@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+from camera.gpu_layout import fix_gpu_layout
+
 from extract_utils.fixups_blob import (
     blob_fixup,
     blob_fixups_user_type,
@@ -30,6 +32,8 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    'vendor/lib64/camera/components/com.qti.node.gpu.so': blob_fixup()
+        .call(fix_gpu_layout),
     (
         'vendor/lib64/camera/components/com.mot.node.c2d.so',
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
