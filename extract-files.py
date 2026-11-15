@@ -27,6 +27,20 @@ namespace_imports = [
     'vendor/motorola/sm6375-common',
 ]
 
+def thermal_engine_fixup():
+    # The shared Blair DT registers the pm7250b charger ADC channel as
+    # chg-skin-therm (holi-pm7250b.dtsi) before bangkk's chg_therm zone, so
+    # chg_therm never appears on Linux 6.1. thermal-engine-v2 names its CPU
+    # frequency devices cpu-cluster%d, so the v1-era cpu0 and cpu6 actions
+    # match nothing and both CPU rules get rejected.
+    return (
+        blob_fixup()
+        .regex_replace(r'\bchg_therm\b', 'chg-skin-therm')
+        .regex_replace(r'\bcpu0\b', 'cpu-cluster0')
+        .regex_replace(r'\bcpu6\b', 'cpu-cluster1')
+    )
+
+
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
 }
@@ -58,6 +72,10 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_unlock'),
     'vendor/lib64/libmot_chi_desktop_helper.so': blob_fixup()
         .add_needed('libgui_buffer_shim_vendor.so'),
+    'vendor/etc/thermal-engine-bangkk.conf': thermal_engine_fixup(),
+    'vendor/etc/thermal-engine-bangkk-camera.conf': thermal_engine_fixup(),
+    'vendor/etc/thermal-engine-bangkk-game-normal.conf': thermal_engine_fixup(),
+    'vendor/etc/thermal-engine-bangkk-game-perf.conf': thermal_engine_fixup(),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
