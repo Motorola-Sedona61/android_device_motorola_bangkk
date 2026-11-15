@@ -4,4 +4,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_bangkk.mk
+    $(LOCAL_DIR)/halcyon_bangkk.mk
+
+COMMON_LUNCH_CHOICES := \
+    halcyon_bangkk-cp2a-userdebug
