@@ -15,8 +15,6 @@ include device/motorola/sm6375-common/BoardConfigCommon.mk
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := bangkk
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=bangkk androidboot.hab.cid=50 androidboot.hab.csv=24
-# Bring-up: SELinux permissive until the bangkk vendor policy is complete.
-BOARD_KERNEL_CMDLINE := $(subst androidboot.selinux=enforcing,androidboot.selinux=permissive,$(BOARD_KERNEL_CMDLINE))
 
 # Display
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 90
