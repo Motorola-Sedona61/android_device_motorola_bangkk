@@ -32,10 +32,12 @@ def thermal_engine_fixup():
     # chg-skin-therm (holi-pm7250b.dtsi) before bangkk's chg_therm zone, so
     # chg_therm never appears on Linux 6.1. thermal-engine-v2 names its CPU
     # frequency devices cpu-cluster%d, so the v1-era cpu0 and cpu6 actions
-    # match nothing and both CPU rules get rejected.
+    # match nothing and both CPU rules get rejected. The kernel names Moto's
+    # quiet thermistor zone quiet-therm, the name the QTI thermal HAL looks up.
     return (
         blob_fixup()
         .regex_replace(r'\bchg_therm\b', 'chg-skin-therm')
+        .regex_replace(r'\bquiet_therm\b', 'quiet-therm')
         .regex_replace(r'\bcpu0\b', 'cpu-cluster0')
         .regex_replace(r'\bcpu6\b', 'cpu-cluster1')
     )
